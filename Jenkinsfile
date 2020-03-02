@@ -6,13 +6,12 @@ node {
         stage('Install node modules'){
                 sh "npm install"
         }
-def project_path="Cookie-Project-Angular/e2e/"
-        dir(project_path) {
         stage('Build'){
+                sh "cd Cookie-Project-Angular/e2e/"
                 sh "npm run build"
         }
         stage('Deploy'){
                 sh "pm2 restart all"
         }
-        }
+        
 }
