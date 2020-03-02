@@ -1,8 +1,9 @@
 node {
         stage('Checkout SCM'){
-                git branch: 'SP2', url: 'git@github.com:kalyan11021980/angular-ssr-starter.git'
+                git branch: 'master', url: 'https://github.com/chakri1998/CookieFrontEnd.git'
         }
-def address=
+    def project_path="Cookie-Project-Angular/"
+        dir(project_path) {
         stage('Install node modules'){
                 sh "npm install"
         }
@@ -11,5 +12,6 @@ def address=
         }
         stage('Deploy'){
                 sh "pm2 restart all"
+        }
         }
 }
