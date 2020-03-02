@@ -1,0 +1,15 @@
+node {
+        stage('Checkout SCM'){
+                git branch: 'SP2', url: 'git@github.com:kalyan11021980/angular-ssr-starter.git'
+        }
+def address=
+        stage('Install node modules'){
+                sh "npm install"
+        }
+        stage('Build'){
+                sh "npm run build:ssr"
+        }
+        stage('Deploy'){
+                sh "pm2 restart all"
+        }
+}
